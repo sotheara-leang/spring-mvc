@@ -2,6 +2,8 @@ package com.mcnc.example.springmvc.company;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Size;
+
 public class Company implements Serializable {
 
 	/**
@@ -9,6 +11,8 @@ public class Company implements Serializable {
 	 */
 	private static final long serialVersionUID = -8981097005217607429L;
 	private Integer id;
+	
+	@Size(min = 3, max = 8, message = "{validation.company.name}")
 	private String name;
 	private String address;
 

@@ -1,5 +1,8 @@
 package com.mcnc.example.springmvc.web.rest;
 
+import javax.validation.Valid;
+
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +15,11 @@ import com.mcnc.example.springmvc.company.Company;
 public class CompanyRestController {
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void createCompany(@RequestBody Company company) {
-		
+	public String createCompany(@Valid @RequestBody Company company, BindingResult result) {
+		 if (result.hasErrors()) {
+			 return "error";
+		 } else {
+			 return "success";
+		 }
 	}
 }
