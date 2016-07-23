@@ -1,12 +1,12 @@
-package com.mcnc.example.springmvc.base.message;
+package com.mcnc.example.springmvc.base.error;
 
-public enum SystemError implements Error, Translateable {
+public enum SystemError implements Error {
 	
 	SYS400("error.system.400"),
 	SYS404("error.system.404"),
 	SYS500("error.system.500");
 	
-	final String messageCode;
+	private final String messageCode;
 
 	SystemError(String messageCode) {
 		this.messageCode = messageCode;
@@ -23,12 +23,7 @@ public enum SystemError implements Error, Translateable {
 	}
 
 	@Override
-	public boolean isSystemError() {
-		return true;
-	}
-
-	@Override
-	public boolean isBussinessError() {
-		return false;
+	public ErrorType getErrorType() {
+		return ErrorType.SYSTEM;
 	}
 }

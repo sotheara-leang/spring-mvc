@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
-	<mvc:annotation-driven validator="validator">
+	<mvc:annotation-driven validator="validator" content-negotiation-manager="contentNegotiationManager">
 		<mvc:message-converters>
         	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
             	<property name="objectMapper" ref="objectMapper"/>
@@ -16,4 +16,19 @@
 	</mvc:annotation-driven>
 	
 	<context:component-scan base-package="com.mcnc.example.springmvc.web.rest" />
+	
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="false"/>
+		<property name="favorParameter" value="true" />
+		<property name="parameterName" value="mediaType" />
+		<property name="useJaf" value="false" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<property name="defaultContentType" value="application/json" />
+	</bean>
+	
 </beans>
