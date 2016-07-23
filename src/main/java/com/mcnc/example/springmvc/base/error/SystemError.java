@@ -1,5 +1,10 @@
 package com.mcnc.example.springmvc.base.error;
 
+/**
+ * System error
+ * @author Sotheara
+ *
+ */
 public enum SystemError implements Error {
 	
 	SYS400("error.system.400"),

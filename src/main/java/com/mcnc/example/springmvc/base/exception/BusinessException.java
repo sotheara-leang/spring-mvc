@@ -2,6 +2,11 @@ package com.mcnc.example.springmvc.base.exception;
 
 import com.mcnc.example.springmvc.base.error.Error;
 
+/**
+ * Business exception
+ * @author Sotheara
+ *
+ */
 public class BusinessException extends RuntimeException {
 
 	/**

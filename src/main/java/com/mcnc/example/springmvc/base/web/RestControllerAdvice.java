@@ -25,6 +25,11 @@ import com.mcnc.example.springmvc.base.error.message.FormElementError;
 import com.mcnc.example.springmvc.base.error.message.FormErrorMessage;
 import com.mcnc.example.springmvc.base.exception.BusinessException;
 
+/**
+ * Rest controller advice
+ * @author Sotheara
+ *
+ */
 @ControllerAdvice(annotations = RestController.class)
 public class RestControllerAdvice {
 

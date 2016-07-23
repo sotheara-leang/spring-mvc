@@ -2,6 +2,11 @@ package com.mcnc.example.springmvc.base.error.message;
 
 import com.mcnc.example.springmvc.base.error.Error;
 
+/**
+ * Error message
+ * @author Sotheara
+ *
+ */
 public class ErrorMessage {
 
 	private Error code;
