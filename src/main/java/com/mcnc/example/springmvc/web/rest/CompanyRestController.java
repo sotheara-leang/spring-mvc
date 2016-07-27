@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mcnc.example.springmvc.base.web.validation.Validation;
+import com.mcnc.example.springmvc.base.web.validation.DefaultValidation;
 import com.mcnc.example.springmvc.company.Company;
 import com.mcnc.example.springmvc.company.CompanyValidator;
 
@@ -22,12 +22,12 @@ public class CompanyRestController {
     }
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void create(@Validated({Validation.CREATE.class}) @RequestBody Company company) {
+	public void create(@Validated({DefaultValidation.CREATE.class}) @RequestBody Company company) {
 
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public void update(@Validated({Validation.UPDATE.class}) @RequestBody Company company) {
+	public void update(@Validated({DefaultValidation.UPDATE.class}) @RequestBody Company company) {
 
 	}
 }
