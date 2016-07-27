@@ -10,8 +10,15 @@ import org.springframework.validation.SmartValidator;
  */
 public abstract class AbstractValidator implements SmartValidator {
 
+	/**
+	 * Default validation
+	 */
 	@Override
-	public void validate(Object target, Errors errors) {
-		validate(target, errors, new Object[] {});
-	}
+	public void validate(Object target, Errors errors) {}
+	
+	/**
+	 * Validation with hints
+	 */
+	@Override
+	public void validate(Object target, Errors errors, Object... validationHints) {}
 }

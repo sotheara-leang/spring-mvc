@@ -5,7 +5,7 @@ package com.mcnc.example.springmvc.base.web.validation;
  * @author Sotheara
  *
  */
-public interface Validation {
+public interface DefaultValidation {
 
 	interface PAGE {}
 	interface VIEW {}
