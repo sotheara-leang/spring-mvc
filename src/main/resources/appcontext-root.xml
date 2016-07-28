@@ -5,7 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
 	<context:annotation-config />
 
 	<context:component-scan base-package="com.mcnc.example.springmvc">
@@ -13,14 +12,21 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController" />
 	</context:component-scan>
 	
-	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"></bean>
-	
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:i18n/messages" />
-        <property name="defaultEncoding" value="UTF-8" />
-    </bean>
-    
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="validationMessageSource" ref="messageSource" />
 	</bean>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+        	<array>
+        		<value>classpath:i18n/messages</value>
+        		<value>classpath:i18n/validation_messages</value>
+        	</array>
+        </property>
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+    
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
+	<bean id="appContextHolder" class="com.mcnc.example.springmvc.base.AppContextHolder" />
+	<bean id="messageUtils" class="com.mcnc.example.springmvc.base.util.MessageUtils" />
 </beans>
