@@ -5,5 +5,4 @@
 	
 	<import resource="classpath:appcontext-root.xml"/>
 	<import resource="classpath:appcontext-mvc.xml"/>
-	<import resource="classpath:appcontext-rest.xml"/>
 </beans>

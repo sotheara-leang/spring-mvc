@@ -1,6 +1,7 @@
 package com.mcnc.example.springmvc.base.exception;
 
 import com.mcnc.example.springmvc.base.error.Error;
+import com.mcnc.example.springmvc.base.error.SystemError;
 
 /**
  * Business exception
@@ -14,7 +15,7 @@ public class BusinessException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 3844253134460323396L;
 	
-	private Error error;
+	private Error error = SystemError.SYS500;
 
 	public BusinessException() {}
 	

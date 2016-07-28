@@ -15,7 +15,8 @@ public class TestCompanyController extends AbstractTestCase {
 	public void testCreateCompany() throws JsonProcessingException, Exception {
 		Company company = new Company();
 		company.setName("13");
-		mockMvc.perform(post("/companies")
+		company.setAddress("Address");
+		mockMvc.perform(post("/api/companiesll")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(mapper.writeValueAsString(company)))
 			.andDo(print());
@@ -25,7 +26,7 @@ public class TestCompanyController extends AbstractTestCase {
 	public void testUpdateCompany() throws JsonProcessingException, Exception {
 		Company company = new Company();
 		company.setName("13");
-		mockMvc.perform(put("/companies")
+		mockMvc.perform(put("/api/companies")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(mapper.writeValueAsString(company)))
 			.andDo(print());
