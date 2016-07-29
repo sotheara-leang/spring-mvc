@@ -29,4 +29,5 @@
 	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper" />
 	<bean id="appContextHolder" class="com.mcnc.example.springmvc.base.AppContextHolder" />
 	<bean id="messageUtils" class="com.mcnc.example.springmvc.base.util.MessageUtils" />
+	<bean id="webUtils" class="com.mcnc.example.springmvc.base.util.WebUtils" />
 </beans>
