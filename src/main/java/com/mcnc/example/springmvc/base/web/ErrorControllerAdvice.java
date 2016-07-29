@@ -86,12 +86,13 @@ public class ErrorControllerAdvice {
 		errorMessage.setMessage(messageSource.getMessage(SystemError.SYS400.getMessageCode(), null, locale));
 		
 		// Prepare form element error
+		List<FormElementError> elementErrors = errorMessage.getErrors();
 		List<FieldError> errors = ex.getBindingResult().getFieldErrors();
 		for (FieldError error : errors) {
 			FormElementError ele = new FormElementError();
 			ele.setField(error.getField());
 			ele.setMessage(error.getDefaultMessage());
-			errorMessage.getErrors().add(ele);
+			elementErrors.add(ele);
 		}
 		
 		model.addAttribute("errorMessage", errorMessage);

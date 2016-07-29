@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mcnc.example.springmvc.base.exception.BusinessException;
 import com.mcnc.example.springmvc.base.web.validation.DefaultValidation;
 import com.mcnc.example.springmvc.company.Company;
 import com.mcnc.example.springmvc.company.CompanyValidator;
@@ -24,7 +23,7 @@ public class CompanyRestController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public void create(@Validated({DefaultValidation.CREATE.class}) @RequestBody Company company) {
-		throw new BusinessException();
+		
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)

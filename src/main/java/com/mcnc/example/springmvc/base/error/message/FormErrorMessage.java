@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.mcnc.example.springmvc.base.error.Error;
 import com.mcnc.example.springmvc.base.error.SystemError;
 
@@ -15,8 +17,10 @@ import com.mcnc.example.springmvc.base.error.SystemError;
  */
 public class FormErrorMessage extends ErrorMessage {
 
-	private List<FormElementError> errors = new ArrayList<>();
-
+	@JacksonXmlElementWrapper(localName = "errors")
+	@JacksonXmlProperty(localName = "error")
+	private List<FormElementError> errors = new ArrayList<FormElementError>();
+	
 	@Override
 	public Error getCode() {
 		return SystemError.SYS400;

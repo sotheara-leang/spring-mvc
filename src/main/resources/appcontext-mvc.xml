@@ -20,13 +20,14 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-		<beans:property name="favorPathExtension" value="true" />
 		<beans:property name="favorParameter" value="true" />
+		<beans:property name="favorPathExtension" value="true" />
 		<beans:property name="useJaf" value="false" />
 		<beans:property name="defaultContentType" value="text/html" />
 		<beans:property name="mediaTypes">
 			<beans:map>
 				<beans:entry key="json" value="application/json" />
+				<beans:entry key="xml" value="application/xml" />
 			</beans:map>
 		</beans:property>
 	</beans:bean>
@@ -36,9 +37,17 @@
 		<beans:property name="contentNegotiationManager" ref="contentNegotiationManager" />
 		<beans:property name="defaultViews">
 			<beans:list>
-				<beans:bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+				<beans:ref bean="jsonView"/>
+				<beans:bean class="org.springframework.web.servlet.view.xml.MappingJackson2XmlView" />
 			</beans:list>
 		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<beans:constructor-arg>
+			<beans:ref bean="objectMapper"/>
+		</beans:constructor-arg>
+		<beans:property name="extractValueFromSingleKeyModel" value="true" />
 	</beans:bean>
 	
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

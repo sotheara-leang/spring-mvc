@@ -6,7 +6,7 @@ package com.mcnc.example.springmvc.base.error.message;
  *
  */
 public class FormElementError {
-
+	
 	private String field;
 	private String message;
 
