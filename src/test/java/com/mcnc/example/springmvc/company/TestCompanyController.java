@@ -28,10 +28,12 @@ public class TestCompanyController extends AbstractTestCase {
 	@Test
 	public void testUpdateCompany() throws JsonProcessingException, Exception {
 		Company company = new Company();
+		company.setId(23);
 		company.setName("13");
+		
 		mockMvc.perform(put("/api/companies")
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
-				.content(mapper.writeValueAsString(company)))
+				.content("{\"id\":23H,\"name\":\"13\",\"address\":null}"))
 			.andDo(print());
 	}
 	

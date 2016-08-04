@@ -6,6 +6,7 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -97,6 +98,18 @@ public class ErrorControllerAdvice {
 		
 		model.addAttribute("errorMessage", errorMessage);
 		
+		return "error/400";
+	}
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public String handleMessageNotReadablerError(HttpMessageNotReadableException ex, Model model, Locale locale) {
+		ErrorMessage errorMessage = new ErrorMessageBuilder()
+				.status(HttpStatus.BAD_REQUEST.value())
+				.message("Bad request")
+				.build();
+		
+		model.addAttribute("errorMessage", errorMessage);
 		return "error/400";
 	}
 	
